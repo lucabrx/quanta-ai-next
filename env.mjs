@@ -13,7 +13,7 @@ export const env = createEnv({
         DATABASE_PASSWORD : z.string(),
         DATABASE_URL: z.string(),
         CLERK_SECRET_KEY : z.string(),
-
+        OPENAI_KEY : z.string(),
     },
     /*
      * Environment variables available on the client (and server).
@@ -37,5 +37,6 @@ export const env = createEnv({
         DATABASE_URL: process.env.DATABASE_URL,
         CLERK_SECRET_KEY : process.env.CLERK_SECRET_KEY,
         NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+        OPENAI_KEY : process.env.OPENAI_KEY,
     },
 });
