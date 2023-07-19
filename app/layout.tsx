@@ -7,7 +7,8 @@ const montserrat = Montserrat({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Quanta AI',
-  description: 'Next-Gen AI-tool for Quanta - the groundbreaking solution for every kind of AI assist. Unlock the full potential of Quanta.',
+  description:
+    'Next-Gen AI-tool for Quanta - the groundbreaking solution for every kind of AI assist. Unlock the full potential of Quanta.',
 }
 
 export default function RootLayout({
@@ -16,10 +17,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-      <ClerkProvider>
-        <html lang="en">
+    <ClerkProvider>
+      <html lang="en">
         <body className={montserrat.className}>{children}</body>
-        </html>
-      </ClerkProvider>
+      </html>
+    </ClerkProvider>
   )
 }
