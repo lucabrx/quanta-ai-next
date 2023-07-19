@@ -11,9 +11,9 @@ export default function Home() {
       <div className="mx-auto mb-4 md:mb-10 max-w-4xl text-center">
         <h1 className="mb-3 md:mb-6 text-4xl sm:text-6xl">
           <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#e64c8c] to-[#645cd8]">
-            The Next-Gen
+            Quanta
           </span>{' '}
-            Ai tool for your creative workflow. {' '}
+           Next-Gen AI-tool for {' '}
           <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#e64c8c] to-[#645cd8]"
           >Quanta</span
           >
