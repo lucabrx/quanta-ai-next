@@ -4,7 +4,7 @@ import { MessageSquare } from 'lucide-react'
 import { ChatForm } from '@/components/chat-form'
 import { db } from '@/lib/db'
 import { Message } from '@/db/tables'
-import { desc, eq } from 'drizzle-orm'
+import {asc, eq} from 'drizzle-orm'
 
 function convertTime(time: Date) {
   const date = new Date(time)
@@ -12,6 +12,8 @@ function convertTime(time: Date) {
   const minutes = date.getMinutes()
   return `${hours}:${minutes} `
 }
+
+
 
 export default async function ConversationPage({
   params: { conversationId },
@@ -22,10 +24,12 @@ export default async function ConversationPage({
     .select()
     .from(Message)
     .where(eq(Message.conversation_id, conversationId))
-    .orderBy(desc(Message.created_at))
+    .orderBy(asc(Message.created_at))
+
+
 
   return (
-    <main>
+    <main className="flex flex-col flex-1 ">
       <Heading
         title="Conversation"
         description="Our most advanced conversation model."
@@ -33,19 +37,18 @@ export default async function ConversationPage({
         iconColor="text-violet-500"
         bgColor="bg-violet-500/10"
       />
-      <div className="px-4 lg:px-8">
-        <ChatForm conversationId={conversationId} />
-        <div className="space-y-4 mt-4">
+      <div className="px-4 lg:px-8 pt-4 flex-1 overflow-y-hidden">
+        <div className="space-y-4 mt-4 mb-6   h-full overflow-y-auto p-4">
           {chat.map((message) => (
             <div
               key={message.id}
               className={`flex flex-col ${
-                message.role === 'bot' ? 'items-start' : 'items-end'
+                message.role === 'system' ? 'items-start' : 'items-end'
               }`}
             >
               <div
                 className={`p-4 rounded-lg ${
-                  message.role === 'bot'
+                  message.role === 'system'
                     ? 'bg-gray-100 text-gray-900'
                     : 'bg-violet-500 text-white'
                 }`}
@@ -58,6 +61,9 @@ export default async function ConversationPage({
             </div>
           ))}
         </div>
+
+          <ChatForm conversationId={conversationId} />
+
       </div>
     </main>
   )

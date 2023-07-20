@@ -1,11 +1,11 @@
 import { auth } from '@clerk/nextjs'
 import { NextResponse } from 'next/server'
-import { Configuration, OpenAIApi } from 'openai'
+import {ChatCompletionRequestMessage, Configuration, OpenAIApi} from 'openai'
 import { env } from '@/env.mjs'
 import { db } from '@/lib/db'
 import { Conversation, Message } from '@/db/tables'
 import { nanoid } from 'nanoid'
-import { eq } from 'drizzle-orm'
+import {asc, eq} from 'drizzle-orm'
 
 const configuration = new Configuration({
   apiKey: env.OPENAI_KEY,
@@ -18,7 +18,8 @@ export async function POST(req: Request) {
     const { userId } = auth()
     const body = await req.json()
     const { message, chatId } = body
-    console.log(body)
+
+    console.log("this is server body: ", body)
 
     if (!userId) {
       return new NextResponse('Unauthorized', { status: 401 })
@@ -54,15 +55,33 @@ export async function POST(req: Request) {
       conversation_id: chatId,
     })
 
+    const chats = await db
+        .select()
+        .from(Message)
+        .where(eq(Message.conversation_id, chatId))
+        .orderBy(asc(Message.created_at))
+
+    let messagesArr :ChatCompletionRequestMessage[] = []
+
+    for (let i = 0; i < chats.length; i++) {
+
+        messagesArr.push({
+          role: chats[i].role,
+          content: String(chats[i].text),
+        })
+    }
+
+    console.log("this is messagesArr: ", messagesArr)
+
     const response = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
-      messages: [{ role: 'system', content: message }],
+      messages: messagesArr,
     })
 
     await db.insert(Message).values({
       id: nanoid(),
       text: String(response.data.choices[0].message?.content),
-      role: 'bot',
+      role: 'system',
       user_id: userId,
       conversation_id: chatId,
     })
