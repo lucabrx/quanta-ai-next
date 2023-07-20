@@ -2,11 +2,12 @@ import { auth } from '@clerk/nextjs'
 import { NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 import { Conversation } from '@/db/tables'
-import { nanoid } from 'nanoid'
 
-export async function GET() {
+interface IParams {
+  chatId: string
+}
+export async function GET(req: Request, { params }: { params: IParams }) {
   try {
-    const convId = nanoid()
     const { userId } = auth()
 
     if (!userId) {
@@ -14,11 +15,11 @@ export async function GET() {
     }
 
     const createConversation = await db.insert(Conversation).values({
-      id: convId,
+      id: params.chatId,
       user_id: userId,
     })
 
-    return NextResponse.json({ conversationId: convId })
+    return NextResponse.json('Conversation created')
   } catch (e) {
     console.log(e)
     return new NextResponse('Internal Error', { status: 500 })

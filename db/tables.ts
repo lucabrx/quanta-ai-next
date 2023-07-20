@@ -16,6 +16,7 @@ export type UserType = InferModel<typeof User, 'select'>
 
 export const Conversation = mysqlTable('Conversation', {
   id: varchar('id', { length: 191 }).primaryKey().notNull(),
+  title: varchar('title', { length: 191 }),
   created_at: timestamp('created_at').notNull().defaultNow(),
   updated_at: timestamp('updated_at').notNull().defaultNow().onUpdateNow(),
   user_id: varchar('user_id', { length: 191 }).notNull(),

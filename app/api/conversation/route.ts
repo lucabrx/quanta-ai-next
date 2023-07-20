@@ -3,8 +3,9 @@ import { NextResponse } from 'next/server'
 import { Configuration, OpenAIApi } from 'openai'
 import { env } from '@/env.mjs'
 import { db } from '@/lib/db'
-import { Message } from '@/db/tables'
+import { Conversation, Message } from '@/db/tables'
 import { nanoid } from 'nanoid'
+import { eq } from 'drizzle-orm'
 
 const configuration = new Configuration({
   apiKey: env.OPENAI_KEY,
@@ -29,6 +30,20 @@ export async function POST(req: Request) {
 
     if (!message) {
       return new NextResponse('Message not provided', { status: 400 })
+    }
+
+    const chat = await db
+      .select()
+      .from(Conversation)
+      .where(eq(Conversation.id, chatId))
+
+    const conversation = chat[0]
+
+    if (conversation.title?.length === undefined) {
+      await db
+        .update(Conversation)
+        .set({ title: message.slice(0, 15) })
+        .where(eq(Conversation.id, chatId))
     }
 
     await db.insert(Message).values({
