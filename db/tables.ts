@@ -3,10 +3,9 @@ import {
   mysqlTable,
   timestamp,
   varchar,
-  mysqlEnum, text,
+  mysqlEnum,
+  text,
 } from 'drizzle-orm/mysql-core'
-
-
 
 export const User = mysqlTable('User', {
   id: varchar('id', { length: 191 }).primaryKey().notNull(),

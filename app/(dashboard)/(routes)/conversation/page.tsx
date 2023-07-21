@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation'
 import { useAllChats } from '@/hooks/use-all-chats'
 import { nanoid } from 'nanoid'
 import Link from 'next/link'
-
+//TODO handle error if no chats and loading
 export default function ConversationPage() {
   const router = useRouter()
   const { error, mutate, chats, isLoading } = useAllChats()

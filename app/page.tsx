@@ -11,6 +11,8 @@ const sentences = [
   'And much more',
 ]
 
+//TODO mobile version
+
 export default function Home() {
   const [currentSentence, setCurrentSentence] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -48,7 +50,7 @@ export default function Home() {
       <div className="absolute inset-x-0 -top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
         <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem] element"></div>
       </div>
-      <div className="py-20 mt-20 z-[100] px-4 lg:px-8">
+      <div className="py-20 mt-28 z-[100] px-4 lg:px-8">
         <div className="mx-auto mb-4 md:mb-10 max-w-4xl text-center">
           <h1 className=" text-4xl sm:text-6xl">
             <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#e64c8c] to-[#645cd8]">
@@ -88,9 +90,15 @@ export default function Home() {
           >
             Get Started
           </Link>
-          <Button size="lg" variant="secondary">
+          <Link
+            href="/dashboard"
+            className={buttonVariants({
+              size: 'lg',
+              variant: 'secondary',
+            })}
+          >
             Learn More
-          </Button>
+          </Link>
         </div>
       </div>
     </main>

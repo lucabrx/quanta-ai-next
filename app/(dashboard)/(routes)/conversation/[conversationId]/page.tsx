@@ -4,7 +4,7 @@ import { MessageSquare } from 'lucide-react'
 import { ChatForm } from '@/components/chat-form'
 import { db } from '@/lib/db'
 import { Message } from '@/db/tables'
-import {asc, eq} from 'drizzle-orm'
+import { asc, eq } from 'drizzle-orm'
 
 function convertTime(time: Date) {
   const date = new Date(time)
@@ -13,7 +13,7 @@ function convertTime(time: Date) {
   return `${hours}:${minutes} `
 }
 
-
+//TODO handle states on server and loading
 
 export default async function ConversationPage({
   params: { conversationId },
@@ -26,8 +26,6 @@ export default async function ConversationPage({
     .where(eq(Message.conversation_id, conversationId))
     .orderBy(asc(Message.created_at))
 
-
-
   return (
     <main className="flex flex-col flex-1 ">
       <Heading
@@ -37,8 +35,8 @@ export default async function ConversationPage({
         iconColor="text-violet-500"
         bgColor="bg-violet-500/10"
       />
-      <div className="px-4 lg:px-8 pt-4 flex-1 overflow-y-hidden">
-        <div className="space-y-4 mt-4 mb-6   h-full overflow-y-auto p-4">
+      <div className="px-4 lg:px-8 py-4 flex-1 flex flex-col justify-between h-full max-h-[calc(100vh-150px)] ">
+        <div className="space-y-4  mb-6   h-fit overflow-y-auto  px-4 ">
           {chat.map((message) => (
             <div
               key={message.id}
@@ -62,8 +60,7 @@ export default async function ConversationPage({
           ))}
         </div>
 
-          <ChatForm conversationId={conversationId} />
-
+        <ChatForm conversationId={conversationId} />
       </div>
     </main>
   )

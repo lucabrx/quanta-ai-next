@@ -1,3 +1,6 @@
+// Get all conversations
+//TODO add pagination or infinite query
+
 import { auth } from '@clerk/nextjs'
 import { NextResponse } from 'next/server'
 import { db } from '@/lib/db'

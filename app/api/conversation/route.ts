@@ -1,34 +1,42 @@
+// Adding title to conversation
+// Sending message to OpenAI
+// Saving response to database
+// Sending all messages to OpenAI from db
+
+// TODO zod validation
+
 import { auth } from '@clerk/nextjs'
 import { NextResponse } from 'next/server'
-import {ChatCompletionRequestMessage, Configuration, OpenAIApi} from 'openai'
+import {
+  type ChatCompletionRequestMessage,
+  Configuration,
+  OpenAIApi,
+} from 'openai'
 import { env } from '@/env.mjs'
 import { db } from '@/lib/db'
 import { Conversation, Message } from '@/db/tables'
 import { nanoid } from 'nanoid'
-import {asc, eq} from 'drizzle-orm'
+import { asc, eq } from 'drizzle-orm'
 
 const configuration = new Configuration({
   apiKey: env.OPENAI_KEY,
 })
 
 const openai = new OpenAIApi(configuration)
-
 export async function POST(req: Request) {
   try {
     const { userId } = auth()
     const body = await req.json()
     const { message, chatId } = body
 
-    console.log("this is server body: ", body)
+    console.log('this is server body: ', body)
 
     if (!userId) {
       return new NextResponse('Unauthorized', { status: 401 })
     }
-
     if (!configuration.apiKey) {
       return new NextResponse('OpenAI API Key not configured.', { status: 500 })
     }
-
     if (!message) {
       return new NextResponse('Message not provided', { status: 400 })
     }
@@ -56,22 +64,19 @@ export async function POST(req: Request) {
     })
 
     const chats = await db
-        .select()
-        .from(Message)
-        .where(eq(Message.conversation_id, chatId))
-        .orderBy(asc(Message.created_at))
+      .select()
+      .from(Message)
+      .where(eq(Message.conversation_id, chatId))
+      .orderBy(asc(Message.created_at))
 
-    let messagesArr :ChatCompletionRequestMessage[] = []
+    let messagesArr: ChatCompletionRequestMessage[] = []
 
     for (let i = 0; i < chats.length; i++) {
-
-        messagesArr.push({
-          role: chats[i].role,
-          content: String(chats[i].text),
-        })
+      messagesArr.push({
+        role: chats[i].role,
+        content: String(chats[i].text),
+      })
     }
-
-    console.log("this is messagesArr: ", messagesArr)
 
     const response = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
