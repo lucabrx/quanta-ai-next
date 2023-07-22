@@ -44,7 +44,7 @@ export default function ConversationPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-8 mt-4">
-        {chats?.map((item, i) => (
+        {chats.map((item, i) => (
           <Link className="p-4 border-black/5 w-full flex items-center justify-between hover:shadow-md transition cursor-pointer bg-card shadow-sm rounded-md"  href={`/conversation/${item.id}`} key={i}>
 
               <div className="p-2 w-fit rounded-md bg-violet-500/10">
