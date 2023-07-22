@@ -7,10 +7,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { FC } from 'react'
 
-interface ChatFormProps {
-  conversationId: string
+interface CodeFormProps {
+  codingId: string
 }
-export const ChatForm: FC<ChatFormProps> = ({ conversationId }) => {
+export const CodeForm: FC<CodeFormProps> = ({ codingId }) => {
   const router = useRouter()
 
   const {
@@ -26,10 +26,10 @@ export const ChatForm: FC<ChatFormProps> = ({ conversationId }) => {
   })
   async function onSubmit(data: PromptValidator) {
     try {
-      const response = await axios.post('/api/conversation', {
+      await axios.post('/api/coding', {
         message: data.prompt,
         role: 'user',
-        chatId: conversationId,
+        codeId: codingId,
       })
 
       reset()
