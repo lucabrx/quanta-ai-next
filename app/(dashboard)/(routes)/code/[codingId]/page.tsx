@@ -62,7 +62,7 @@ export default async function ChatPage({
                           <pre {...props} />
                         </div>
                       ),
-                      code: ({ node, ...props }) => (
+                      code: ({ node,inline, ...props }) => (
                         <code
                           className="bg-black/10 rounded-lg p-1"
                           {...props}
@@ -70,6 +70,8 @@ export default async function ChatPage({
                       ),
                     }}
                     className="text-sm overflow-hidden leading-7"
+
+
                   >
                     {String(message.text) || ''}
                   </ReactMarkdown>
