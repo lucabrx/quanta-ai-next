@@ -12,7 +12,7 @@ import Link from 'next/link'
 //TODO handle error if no chats and loading
 export default function ConversationPage() {
   const router = useRouter()
-  const { error, mutate, chats, isLoading } =  useAllChats()
+  const { error, mutate, chats = [], isLoading } =  useAllChats()
   const id = nanoid()
 
   async function submitNewConversation() {

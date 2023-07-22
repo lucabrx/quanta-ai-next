@@ -13,7 +13,7 @@ import { useAllCoding } from '@/hooks/use-all-coding'
 //TODO change coding to code in api
 export default function ConversationPage() {
   const router = useRouter()
-  const { error, mutate, chats, isLoading } = useAllCoding()
+  const { error, mutate, chats = [], isLoading } = useAllCoding()
   const id = nanoid()
 
   async function submitNewCodingConversation() {
