@@ -1,4 +1,4 @@
-import { Code, ImageIcon, MessageSquare, Music, VideoIcon } from 'lucide-react'
+import { Code, ImageIcon, Languages, MessageSquare } from 'lucide-react'
 
 export const tools = [
   {
@@ -21,5 +21,12 @@ export const tools = [
     color: 'text-green-700',
     bgColor: 'bg-green-700/10',
     href: '/code',
+  },
+  {
+    label: 'Language Translation',
+    icon: Languages,
+    href: '/translate',
+    color: 'text-blue-600',
+    bgColor: 'bg-blue-600/10',
   },
 ]

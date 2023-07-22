@@ -3,6 +3,7 @@ import Link from 'next/link'
 import {
   Code,
   ImageIcon,
+  Languages,
   LayoutDashboard,
   MessageSquare,
   Music,
@@ -36,6 +37,12 @@ const routes = [
     icon: Code,
     color: 'text-green-700',
     href: '/code',
+  },
+  {
+    label: 'Language Translation',
+    icon: Languages,
+    color: 'text-blue-600',
+    href: '/translation',
   },
   {
     label: 'Settings',
