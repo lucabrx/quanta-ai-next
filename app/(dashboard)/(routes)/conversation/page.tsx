@@ -28,9 +28,10 @@ export default function ConversationPage() {
   if(isLoading) return <div>Loading...</div>
     if(error) return <div>{error}</div>
 
+  console.log(Array.isArray(chats))
 
   return (
-    <main className="px-4 xl:px-8 mt-4">
+    <div className="px-4 xl:px-8 mt-4">
       <div className="flex flex-col justify-center  md:flex-row md:justify-between items-start">
         <Heading
           title="Conversation"
@@ -57,6 +58,6 @@ export default function ConversationPage() {
           </Link>
         ))}
       </div>
-    </main>
+    </div>
   )
 }

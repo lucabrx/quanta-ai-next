@@ -27,7 +27,7 @@ export default function ConversationPage() {
   }
 
   return (
-    <main className="px-4 xl:px-8 mt-4">
+    <div className="px-4 xl:px-8 mt-4">
       <div className="flex flex-col justify-center  md:flex-row md:justify-between items-start">
         <Heading
           title="Code"
@@ -53,6 +53,6 @@ export default function ConversationPage() {
           </Link>
         ))}
       </div>
-    </main>
+    </div>
   )
 }
