@@ -31,7 +31,7 @@ export const CodingMessages: FC<CodingMessagesProps> = ({ chat }) => {
           <div
             className={`p-4 rounded-lg ${
               message.role === 'system'
-                ? 'bg-gray-100 text-gray-900'
+                ? 'bg-gray-200 text-gray-900'
                 : 'bg-green-700 text-white'
             }`}
           >
