@@ -4,7 +4,7 @@ import { MobileSidebar } from '@/components/mobile-sidebar'
 
 export const Navbar = () => {
   return (
-    <div className="flex justify-between md:justify-end p-4 max-w-7xl mx-auto">
+    <div className="flex justify-between md:justify-end p-4 mx-auto ">
       <MobileSidebar />
 
       <Link
