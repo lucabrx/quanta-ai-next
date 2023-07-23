@@ -3,8 +3,6 @@
 // Saving response to database
 // Sending all messages to OpenAI from db
 
-// TODO zod validation
-
 import { auth } from '@clerk/nextjs'
 import { NextResponse } from 'next/server'
 import {

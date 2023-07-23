@@ -1,69 +1,93 @@
 'use client'
 import { Button } from '@/components/ui/button'
-import { promptValidator, PromptValidator } from '@/lib/validators'
 import axios from 'axios'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from 'next/navigation'
-import { FC } from 'react'
+import {
+  type FC,
+  FormEvent,
+  LegacyRef,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
+import { Loader2, Send } from 'lucide-react'
 
-interface CodeFormProps {
+interface ChatFormProps {
   codingId: string
 }
-export const CodeForm: FC<CodeFormProps> = ({ codingId }) => {
-  const router = useRouter()
+export const CodeForm: FC<ChatFormProps> = ({ codingId }) => {
+  const inputRef = useRef<HTMLTextAreaElement>(null)
+  const [prompt, setPrompt] = useState<string>('')
+  const [loading, setLoading] = useState<boolean>(false)
 
-  const {
-    register,
-    handleSubmit,
-    formState: { isLoading },
-    reset,
-  } = useForm<PromptValidator>({
-    resolver: zodResolver(promptValidator),
-    defaultValues: {
-      prompt: '',
-    },
-  })
-  async function onSubmit(data: PromptValidator) {
-    try {
-      await axios.post('/api/coding', {
-        message: data.prompt,
-        role: 'user',
-        codeId: codingId,
-      })
-
-      reset()
-    } catch (error: any) {
-      if (error?.response?.status === 403) {
-        // limited reached TODO
-        console.log('Limited reached')
-      } else {
-        console.log(error, 'random error')
-      }
-    } finally {
-      router.refresh()
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus()
     }
-  }
+  }, [])
+
+  const onSubmit = useCallback(
+    async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
+      setLoading(true)
+      try {
+        if (!prompt || prompt.length === 0) return
+        await axios.post('/api/coding', {
+          message: prompt,
+          role: 'user',
+          codeId: codingId,
+        })
+
+        setPrompt('')
+        window.location.reload()
+        inputRef.current?.focus()
+      } catch (error: any) {
+        if (error?.response?.status === 403) {
+          // limited reached TODO
+          console.log('Limited reached')
+        } else {
+          console.log(error, 'random error')
+        }
+      } finally {
+        setLoading(false)
+      }
+    },
+    [prompt, codingId],
+  )
+
+  const handleKeyDown = useCallback(
+    async (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault() // Prevent adding a new line
+        await onSubmit(e as unknown as FormEvent<HTMLFormElement>)
+      }
+    },
+    [onSubmit],
+  )
 
   return (
     <div>
       <form
-        onSubmit={handleSubmit(onSubmit)}
-        className=" rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2"
+        onSubmit={(e) => onSubmit(e)}
+        className="flex w-full relative  h-24"
       >
         <textarea
-          className="border-0 outline-none focus-visible:ring-0 bg-transparent focus-visible:ring-transparent resize-none h-auto
-                 col-span-12 lg:col-span-10 w-full"
-          {...register('prompt')}
+          disabled={loading}
+          ref={inputRef as LegacyRef<HTMLTextAreaElement>}
+          className="w-full h-full resize-none rounded-lg px-4 py-2 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-green-700 focus:border-transparent"
           placeholder="What was Elon middle name? "
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
 
         <Button
-          className="col-span-12 lg:col-span-2 w-full"
+          disabled={loading}
+          className="absolute right-2 bottom-2 h-8 w-8 bg-green-700 hover:bg-green-700 text-white"
           type="submit"
           size="icon"
         >
-          Generate
+          {loading ? <Loader2 className="animate-spin w-4 h-4" /> : <Send />}
         </Button>
       </form>
     </div>
