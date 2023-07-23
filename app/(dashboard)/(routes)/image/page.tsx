@@ -195,7 +195,7 @@ export default function ImagePage() {
         </div>
 
         <div className="flex flex-col justify-center items-center h-full w-full">
-          <div className="flex flex-wrap gap-4 w-full justify-center items-center bg-card shadow p-4 rounded-md border border-border xl:p-8">
+          <div className="flex flex-wrap gap-2 w-full justify-center items-center bg-card shadow p-4 rounded-md border border-border xl:p-4">
             <h2 className="font-semibold text-lg w-full text-left">
               Content Type
             </h2>
