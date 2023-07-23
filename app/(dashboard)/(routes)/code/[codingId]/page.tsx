@@ -31,7 +31,7 @@ export default async function ChatPage({
     .orderBy(asc(CodingResponse.created_at))
 
   return (
-    <main className="flex flex-col flex-1 ">
+    <main className="px-4 lg:px-8 flex flex-col flex-1 ">
       <Heading
         title="Code "
         description="Our most advanced coding helper."
@@ -39,7 +39,7 @@ export default async function ChatPage({
         iconColor="text-green-700"
         bgColor="bg-green-700/10"
       />
-      <div className="px-4 lg:px-8 py-4 flex-1 flex flex-col justify-between h-full  max-h-[calc(100vh-160px)] ">
+      <div className=" py-4 flex-1 flex flex-col justify-between h-full  max-h-[calc(100vh-160px)] ">
         <CodingMessages chat={chat} />
         <CodeForm codingId={codingId} />
       </div>

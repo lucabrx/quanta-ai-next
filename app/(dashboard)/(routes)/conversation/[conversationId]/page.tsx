@@ -21,7 +21,7 @@ export default async function ConversationPage({
     .orderBy(asc(Message.created_at))
 
   return (
-    <main className="flex flex-col flex-1">
+    <main className="px-4 lg:px-8 flex flex-col flex-1">
       <Heading
         title="Conversation"
         description="Our most advanced conversation model."
@@ -29,7 +29,7 @@ export default async function ConversationPage({
         iconColor="text-violet-500"
         bgColor="bg-violet-500/10"
       />
-      <div className="px-4 lg:px-8 py-4 flex-1 flex flex-col justify-between h-full max-h-[calc(100vh-160px)]">
+      <div className="py-4 flex-1 flex flex-col justify-between h-full max-h-[calc(100vh-160px)]">
         <ChatMessages chat={chat} />
         <ChatForm conversationId={conversationId} />
       </div>
