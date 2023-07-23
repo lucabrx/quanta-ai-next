@@ -5,14 +5,14 @@ import {
   ImageIcon,
   Languages,
   LayoutDashboard,
+  LogOut,
   MessageSquare,
-  Music,
   Settings,
-  VideoIcon,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { usePathname } from 'next/navigation'
-
+import { SignOutButton, useUser } from '@clerk/nextjs'
+import Image from 'next/image'
 const routes = [
   {
     label: 'Dashboard',
@@ -47,12 +47,14 @@ const routes = [
   {
     label: 'Settings',
     icon: Settings,
+    color: 'text-zinc-900',
     href: '/settings',
   },
 ]
 
 export const Sidebar = () => {
   const pathname = usePathname()
+  const { user } = useUser()
 
   return (
     <div className="space-y-4 py-4 flex flex-col h-full bg-accent shadow-accent border-r border-r-border">
@@ -82,6 +84,28 @@ export const Sidebar = () => {
               </div>
             </Link>
           ))}
+        </div>
+      </div>
+
+      <div className="px-3 py-2 flex  items-center w-full gap-2 justify-between">
+        <div className="flex justify-center items-center gap-2">
+          <Image
+            className="rounded-full"
+            width={32}
+            height={32}
+            src={user?.profileImageUrl as string}
+            alt="img"
+          />
+
+          <p className="text-primary/80"> {user?.fullName}</p>
+        </div>
+        <div className="p-2 hover:bg-primary/10 rounded-md transition-all duration-300 cursor-pointer">
+          <SignOutButton>
+            <div className="p-1">
+              {' '}
+              <LogOut className="h-6 w-6" />
+            </div>
+          </SignOutButton>
         </div>
       </div>
     </div>
