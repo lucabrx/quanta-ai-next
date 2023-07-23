@@ -46,11 +46,11 @@ export default function Home() {
   const gradientText = currentSentence.substring(length)
 
   return (
-    <main className="relative isolate md:pt-14 pt-8">
+    <main className="pt-36 md:mt-8 md:pt-14 max-h-screen flex-1 overflow-y-hidden">
       <div className="absolute inset-x-0 -top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
         <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem] element"></div>
       </div>
-      <div className="py-20 mt-28 z-[100] px-4 lg:px-8">
+      <div className=" md:py-20 md:mt-28 z-[100] px-4 lg:px-8">
         <div className="mx-auto mb-4 md:mb-10 max-w-4xl text-center">
           <h1 className=" text-4xl sm:text-6xl">
             <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#e64c8c] to-[#645cd8]">
@@ -101,6 +101,8 @@ export default function Home() {
           </Link>
         </div>
       </div>
+
+      <div className=""></div>
     </main>
   )
 }

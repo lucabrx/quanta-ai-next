@@ -14,6 +14,7 @@ import { Download, ImageIcon, Loader2, Wand2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 //TODO - work on mobile view
+//TODO - user settings on dashboard and free space from top
 
 import {
   colorToneTags,
@@ -126,8 +127,8 @@ export default function ImagePage() {
   )
 
   return (
-    <main className="flex flex-col flex-1  justify-center mx-8">
-      <div className="grid md:grid-cols-[73%,27%] 3xl:grid-cols-[80%,20%]">
+    <main className="flex flex-col flex-1 items-start justify-center mx-8">
+      <div className="grid md:grid-cols-[73%,27%] flex-1 mb-8 3xl:grid-cols-[80%,20%]">
         <div className="w-full flex flex-col justify-between h-full md:pr-8">
           <Heading
             title="Image Generation"
@@ -194,7 +195,7 @@ export default function ImagePage() {
         </div>
 
         <div className="flex flex-col justify-center items-center w-full">
-          <div className="flex flex-wrap gap-4 w-full justify-center items-center bg-card shadow p-4 rounded-md border border-border">
+          <div className="flex flex-wrap gap-4 w-full justify-center items-center bg-card shadow p-4 rounded-md border border-border xl:p-8">
             <h2 className="font-semibold text-lg w-full text-left">
               Content Type
             </h2>
