@@ -127,8 +127,8 @@ export default function ImagePage() {
   )
 
   return (
-    <main className="flex flex-col flex-1 items-start justify-center mx-8">
-      <div className="grid md:grid-cols-[73%,27%] flex-1 mb-8 3xl:grid-cols-[80%,20%]">
+    <main className="flex flex-col flex-1 items-start justify-center mx-8 max-h-screen">
+      <div className="grid md:grid-cols-[73%,27%] flex-1  3xl:grid-cols-[80%,20%]">
         <div className="w-full flex flex-col justify-between h-full md:pr-8">
           <Heading
             title="Image Generation"
@@ -194,7 +194,7 @@ export default function ImagePage() {
           </form>
         </div>
 
-        <div className="flex flex-col justify-center items-center w-full">
+        <div className="flex flex-col justify-center items-center h-full w-full">
           <div className="flex flex-wrap gap-4 w-full justify-center items-center bg-card shadow p-4 rounded-md border border-border xl:p-8">
             <h2 className="font-semibold text-lg w-full text-left">
               Content Type
