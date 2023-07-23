@@ -30,7 +30,6 @@ export async function POST(req: Request) {
       return new NextResponse('Something is missing', { status: 400 })
     }
 
-
     const response = await openai.createImage({
       prompt,
       n: parseInt(amount),
