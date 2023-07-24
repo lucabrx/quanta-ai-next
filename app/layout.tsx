@@ -2,6 +2,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import { ClerkProvider } from '@clerk/nextjs'
+import { ThemeProvider } from '@/components/helpers/theme-provider'
+import { TailwindIndicator } from '@/components/helpers/tailwind-indicator'
 
 const montserrat = Montserrat({ subsets: ['latin'] })
 
@@ -18,9 +20,12 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body className={montserrat.className}>
-          {children}
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            {children}
+            <TailwindIndicator />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
