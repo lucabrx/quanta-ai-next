@@ -11,6 +11,57 @@ import {
   MessageSquare,
 } from 'lucide-react'
 
+const features = [
+  {
+    name: 'Chat',
+    description: 'Chat with Quanta and get answers to your questions.',
+    icon: MessageSquare,
+  },
+  {
+    name: 'Code Generator',
+    description: 'Boost your productivity with Quanta`s code generator.',
+    icon: Code,
+  },
+  {
+    name: 'Image Generator',
+    description: 'Generate images with Quanta`s image generator.',
+    icon: ImageIcon,
+  },
+  {
+    name: 'Icon Generator',
+    description: 'Generate icons with Quanta`s icon generator.',
+    icon: Hexagon,
+  },
+  {
+    name: 'Translator',
+    description: 'Translate any language known by world.',
+    icon: Languages,
+  },
+  {
+    name: 'Subscriptions',
+    description: "For less then 20$ a month you can get access to all features.",
+    icon: DollarSign,
+  }
+]
+
+const pricing = [
+  {
+    name: 'Free',
+    price: 0,
+    features: ['✅Chat Bot', '✅Code Generator', '✅Translator'],
+  },
+  {
+    name: 'Standard',
+    price: 10,
+    features: ['✅Chat Bot', '✅Code Generator', '✅Translator', "✅Image Generator", ],
+  },
+    {
+        name: 'Pro',
+        price: 20,
+        features: ['✅Chat Bot', '✅Code Generator', '✅Translator', "✅Image Generator", "✅Icon Generator", ],
+    },
+]
+
 export default function HomePage() {
   return (
     <main className="flex-1 container overflow-y-hidden">
@@ -71,28 +122,38 @@ export default function HomePage() {
           </p>
         </div>
         <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <div
-              key={i}
-              className="relative overflow-hidden rounded-lg border bg-background p-2"
+          {pricing.map((item, i) => {
+            return <div
+                key={i}
+                className={cn("relative overflow-hidden shadow rounded-lg border bg-background p-2",
+                item.name === "Standard" && "border-primary"
+                )}
             >
-              <div className="flex h-[340px] flex-col justify-between rounded-md p-6">
-                <div className="space-y-2">
-                  <h3 className="font-bold text-lg">Free</h3>
-                  <p className=" text-muted-foreground">Free</p>
-                </div>
+              {
+                item.name === "Standard" &&
+                  <div className="absolute top-2 right-2 p-2 rounded-md border border-primary text-sm">
+                Best Value
+                  </div>
 
+              }
+
+              <div className="flex h-[380px] flex-col justify-between rounded-md p-6">
                 <div className="space-y-2">
+                  <h3 className="font-bold text-lg">{item.name}</h3>
+                  <p className=" text-muted-foreground font-bold">{item.price === 0 ? "Free" : item.price + "$"}</p>
+
+
+
                   <h3 className="font-bold text-lg">Features</h3>
-                  <p className=" text-muted-foreground">✅ Chat Bot</p>
-                  <p className=" text-muted-foreground">✅ Code Generator</p>
-                  <p className=" text-muted-foreground">✅ Translator</p>
+                  {item.features.map((feature, i) => (
+                      <p key={i} className=" text-muted-foreground">{feature}</p>
+                    ))}
                 </div>
 
                 <Button className="w-full mt-4">Embrace Quanta</Button>
               </div>
             </div>
-          ))}
+          })}
         </div>
       </section>
 
@@ -135,72 +196,20 @@ export default function HomePage() {
           <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"></p>
         </div>
         <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
-          <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <MessageSquare className="h-12 w-12 " />
-              <div className="space-y-2">
-                <h3 className="font-bold">Chat</h3>
-                <p className="text-sm text-muted-foreground">
-                  Chat with Quanta and get answers to your questions.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <Code className="h-12 w-12 " />
-              <div className="space-y-2">
-                <h3 className="font-bold">Code Generator</h3>
-                <p className="text-sm">
-                  Boost your productivity with Quanta`&apos;s code generator.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <ImageIcon className="h-12 w-12 " />
-              <div className="space-y-2">
-                <h3 className="font-bold">Image Generator</h3>
-                <p className="text-sm text-muted-foreground">
-                  Generate images with Quanta`&apos;s image generator.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <Hexagon className="h-12 w-12 " />
-              <div className="space-y-2">
-                <h3 className="font-bold">Icon Generator</h3>
-                <p className="text-sm text-muted-foreground">
-                  Generate icons with Quanta`&apos;s icon generator.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <Languages className="h-12 w-12 " />
-              <div className="space-y-2">
-                <h3 className="font-bold">Translator</h3>
-                <p className="text-sm text-muted-foreground">
-                  Translate any language known by world.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="relative overflow-hidden rounded-lg border bg-background p-2">
-            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-              <DollarSign className="h-12 w-12 " />
-              <div className="space-y-2">
-                <h3 className="font-bold">Subscriptions</h3>
-                <p className="text-sm text-muted-foreground">
-                  For less then 20$ a month you can get access to all features.
-                </p>
-              </div>
-            </div>
-          </div>
+          {
+            features.map((feature, i) => (
+                <div key={i} className="relative overflow-hidden shadow rounded-lg border bg-background p-2">
+                  <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
+                    <feature.icon className="h-12 w-12 " />
+                    <div className="space-y-2">
+                      <h3 className="font-bold">{feature.name}</h3>
+                      <p className="text-sm text-muted-foreground">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+            ))}
         </div>
       </section>
     </main>

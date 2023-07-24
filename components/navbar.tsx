@@ -3,10 +3,10 @@ import Link from 'next/link'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
-import { Webhook, X } from 'lucide-react'
+import {LogOut, Webhook, X} from 'lucide-react'
 import { useRef, useState } from 'react'
 import { useClickOutside } from '@/app/hooks/use-click-outside'
-
+import { SignOutButton, auth} from '@clerk/nextjs'
 const navLinks = [
   {
     name: 'Home',
@@ -14,22 +14,29 @@ const navLinks = [
     selected: true,
   },
   {
-    name: 'Features',
-    href: '/1',
+    name: 'Pricing',
+    href: '#pricing',
     selected: false,
   },
   {
-    name: 'Pricing',
-    href: '/2',
+    name: 'About',
+    href: '#about',
     selected: false,
   },
+  {
+    name: 'Features',
+    href: '#features',
+    selected: false,
+  },
+
 ]
 
-export function Navbar() {
+export function Navbar({userId}: {userId: string | null}) {
   const path = usePathname()
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false)
   const mobMenuRef = useRef<HTMLDivElement>(null)
   useClickOutside(mobMenuRef, () => setShowMobileMenu(false))
+
 
   return (
     <header className="w-full border-b border-border flex flex-col">
@@ -99,9 +106,14 @@ export function Navbar() {
             </div>
           )}
         </div>
-        <Link href="/sign-in" className={buttonVariants()}>
-          Login
-        </Link>
+        {
+          userId ? <Button>
+                <SignOutButton/>
+              </Button> :
+            <Link href="/sign-in" className={buttonVariants()}>
+            Login
+          </Link>
+        }
       </div>
     </header>
   )

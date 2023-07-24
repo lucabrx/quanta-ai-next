@@ -1,11 +1,14 @@
 import { Navbar } from '@/components/navbar'
 import Footer from '@/components/footer'
 import { type ReactNode } from 'react'
+import {auth} from "@clerk/nextjs";
 
-export default function Layout({ children }: { children: ReactNode }) {
-  return (
+export default async function Layout({ children }: { children: ReactNode }) {
+    const {userId} = auth()
+
+    return (
     <>
-      <Navbar />
+      <Navbar userId = {userId} />
       {children}
       <Footer />
     </>
