@@ -11,7 +11,9 @@ export default function Footer() {
       : 'hidden'
   console.log(path)
   return (
-    <header className={cn('w-full border-t border-border  flex-col', noFooter)}>
+    <footer
+      className={cn('w-full border-t border-border/50  flex-col', noFooter)}
+    >
       <div className="container flex justify-between w-full py-2">
         <div>
           <p className="text-sm text-muted-foreground">
@@ -21,6 +23,6 @@ export default function Footer() {
         </div>
         <ThemeToggle />
       </div>
-    </header>
+    </footer>
   )
 }

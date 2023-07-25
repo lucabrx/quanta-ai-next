@@ -8,7 +8,7 @@ import { useRef, useState } from 'react'
 import { useClickOutside } from '@/app/hooks/use-click-outside'
 import { SignOutButton } from '@clerk/nextjs'
 import { navLinks } from '@/config/nav-links'
-
+//TODO paths
 export function Navbar({ userId }: { userId: string | null }) {
   const path = usePathname()
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false)
@@ -18,9 +18,16 @@ export function Navbar({ userId }: { userId: string | null }) {
     path !== '/chat' || '/code' || '/translate' || '/sign-in' || '/sign-up'
       ? 'flex'
       : 'hidden'
+  const isNavbar =
+    'chat' || 'code' || 'translate' || 'icon' || 'image' || 'joke'
 
   return (
-    <header className={cn('w-full border-b border-border flex-col', noNavbar)}>
+    <header
+      className={cn(
+        'w-full border-b dark:border-border border-white/20 flex-col',
+        noNavbar,
+      )}
+    >
       <div className="container flex justify-between w-full items-center py-2">
         <div className="flex gap-6 md:gap-10 justify-center items-center">
           <Link href="/" className="hidden items-center space-x-2 md:flex ">
@@ -46,9 +53,7 @@ export function Navbar({ userId }: { userId: string | null }) {
               href="/dashboard"
               className={cn(
                 'flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm',
-                '/dashboard' === path
-                  ? 'text-foreground'
-                  : 'text-foreground/60',
+                isNavbar === path ? 'text-foreground' : 'text-foreground/60',
               )}
             >
               Dashboard

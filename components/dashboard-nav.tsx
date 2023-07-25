@@ -66,8 +66,10 @@ export function DashboardNav() {
               <span
                 className={cn(
                   'group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent' +
-	                ' hover:text-accent-foreground hover:bg-primary/10',
-                  path === item.href ? 'dark:bg-accent bg-primary/10' : 'transparent',
+                    ' hover:text-accent-foreground hover:bg-primary/10',
+                  path === item.href
+                    ? 'dark:bg-accent bg-primary/10'
+                    : 'transparent',
                 )}
               >
                 <item.icon className="mr-2 h-4 w-4" />
