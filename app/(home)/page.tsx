@@ -2,65 +2,8 @@
 import { Button, buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
-import {
-  Code,
-  DollarSign,
-  Hexagon,
-  Image as ImageIcon,
-  Languages,
-  MessageSquare,
-} from 'lucide-react'
 
-const features = [
-  {
-    name: 'Chat',
-    description: 'Chat with Quanta and get answers to your questions.',
-    icon: MessageSquare,
-  },
-  {
-    name: 'Code Generator',
-    description: 'Boost your productivity with Quanta`s code generator.',
-    icon: Code,
-  },
-  {
-    name: 'Image Generator',
-    description: 'Generate images with Quanta`s image generator.',
-    icon: ImageIcon,
-  },
-  {
-    name: 'Icon Generator',
-    description: 'Generate icons with Quanta`s icon generator.',
-    icon: Hexagon,
-  },
-  {
-    name: 'Translator',
-    description: 'Translate any language known by world.',
-    icon: Languages,
-  },
-  {
-    name: 'Subscriptions',
-    description: "For less then 20$ a month you can get access to all features.",
-    icon: DollarSign,
-  }
-]
-
-const pricing = [
-  {
-    name: 'Free',
-    price: 0,
-    features: ['✅Chat Bot', '✅Code Generator', '✅Translator'],
-  },
-  {
-    name: 'Standard',
-    price: 10,
-    features: ['✅Chat Bot', '✅Code Generator', '✅Translator', "✅Image Generator", ],
-  },
-    {
-        name: 'Pro',
-        price: 20,
-        features: ['✅Chat Bot', '✅Code Generator', '✅Translator', "✅Image Generator", "✅Icon Generator", ],
-    },
-]
+import { pricing, features } from '@/config/pricing'
 
 export default function HomePage() {
   return (
@@ -71,7 +14,7 @@ export default function HomePage() {
       </div>
 
       {/* content */}
-      <section className="space-y-6 pb-8  md:pb-12 pt-20 lg:py-36">
+      <section className="space-y-6 pb-8  md:pb-12 pt-20 lg:py-36 xl:pt-42">
         <div className="container flex max-w-[1120px] flex-col items-center gap-4 text-center">
           <p className="rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium">
             Powered by OpenAI
@@ -110,6 +53,37 @@ export default function HomePage() {
       </section>
 
       <section
+        id="features"
+        className="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-24 "
+      >
+        <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
+          <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
+            Features
+          </h2>
+          <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"></p>
+        </div>
+        <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
+          {features.map((feature, i) => (
+            <div
+              key={i}
+              className="relative overflow-hidden shadow rounded-lg border bg-background p-2"
+            >
+              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-primary/30 to-secondary/30 opacity-10"></div>
+              <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
+                <feature.icon className="h-12 w-12 " />
+                <div className="space-y-2">
+                  <h3 className="font-bold">{feature.name}</h3>
+                  <p className="text-sm text-muted-foreground">
+                    {feature.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section
         id="pricing"
         className="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12"
       >
@@ -121,38 +95,43 @@ export default function HomePage() {
             For 20$ a month you can get access to all features.
           </p>
         </div>
+
         <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
           {pricing.map((item, i) => {
-            return <div
+            return (
+              <div
                 key={i}
-                className={cn("relative overflow-hidden shadow rounded-lg border bg-background p-2",
-                item.name === "Standard" && "border-primary"
+                className={cn(
+                  'relative overflow-hidden shadow rounded-lg border bg-background p-2',
+                  item.name === 'Standard' && 'border-primary/50',
                 )}
-            >
-              {
-                item.name === "Standard" &&
+              >
+                {item.name === 'Standard' && (
                   <div className="absolute top-2 right-2 p-2 rounded-md border border-primary text-sm">
-                Best Value
+                    Best Value
+                  </div>
+                )}
+
+                <div className="flex h-[380px] flex-col justify-between rounded-md p-6">
+                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-primary/30 to-secondary/30 opacity-10"></div>
+                  <div className="space-y-2">
+                    <h3 className="font-bold text-lg">{item.name}</h3>
+                    <p className=" text-muted-foreground font-bold">
+                      {item.price === 0 ? 'Free' : item.price + '$'}
+                    </p>
+
+                    <h3 className="font-bold text-lg">Features</h3>
+                    {item.features.map((feature, i) => (
+                      <p key={i} className=" text-muted-foreground">
+                        {feature}
+                      </p>
+                    ))}
                   </div>
 
-              }
-
-              <div className="flex h-[380px] flex-col justify-between rounded-md p-6">
-                <div className="space-y-2">
-                  <h3 className="font-bold text-lg">{item.name}</h3>
-                  <p className=" text-muted-foreground font-bold">{item.price === 0 ? "Free" : item.price + "$"}</p>
-
-
-
-                  <h3 className="font-bold text-lg">Features</h3>
-                  {item.features.map((feature, i) => (
-                      <p key={i} className=" text-muted-foreground">{feature}</p>
-                    ))}
+                  <Button className="w-full mt-4">Embrace Quanta</Button>
                 </div>
-
-                <Button className="w-full mt-4">Embrace Quanta</Button>
               </div>
-            </div>
+            )
           })}
         </div>
       </section>
@@ -182,34 +161,6 @@ export default function HomePage() {
             use, if there are any questions or problems, feel free to contact
             me, Iam open for any kind of feedback.
           </p>
-        </div>
-      </section>
-
-      <section
-        id="features"
-        className="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-24"
-      >
-        <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
-          <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-            Features
-          </h2>
-          <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7"></p>
-        </div>
-        <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
-          {
-            features.map((feature, i) => (
-                <div key={i} className="relative overflow-hidden shadow rounded-lg border bg-background p-2">
-                  <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
-                    <feature.icon className="h-12 w-12 " />
-                    <div className="space-y-2">
-                      <h3 className="font-bold">{feature.name}</h3>
-                      <p className="text-sm text-muted-foreground">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-            ))}
         </div>
       </section>
     </main>

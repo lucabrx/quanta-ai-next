@@ -3,43 +3,24 @@ import Link from 'next/link'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
-import {LogOut, Webhook, X} from 'lucide-react'
+import { Webhook, X } from 'lucide-react'
 import { useRef, useState } from 'react'
 import { useClickOutside } from '@/app/hooks/use-click-outside'
-import { SignOutButton, auth} from '@clerk/nextjs'
-const navLinks = [
-  {
-    name: 'Home',
-    href: '/',
-    selected: true,
-  },
-  {
-    name: 'Pricing',
-    href: '#pricing',
-    selected: false,
-  },
-  {
-    name: 'About',
-    href: '#about',
-    selected: false,
-  },
-  {
-    name: 'Features',
-    href: '#features',
-    selected: false,
-  },
+import { SignOutButton } from '@clerk/nextjs'
+import { navLinks } from '@/config/nav-links'
 
-]
-
-export function Navbar({userId}: {userId: string | null}) {
+export function Navbar({ userId }: { userId: string | null }) {
   const path = usePathname()
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false)
   const mobMenuRef = useRef<HTMLDivElement>(null)
   useClickOutside(mobMenuRef, () => setShowMobileMenu(false))
-
+  const noNavbar =
+    path !== '/chat' || '/code' || '/translate' || '/sign-in' || '/sign-up'
+      ? 'flex'
+      : 'hidden'
 
   return (
-    <header className="w-full border-b border-border flex flex-col">
+    <header className={cn('w-full border-b border-border flex-col', noNavbar)}>
       <div className="container flex justify-between w-full items-center py-2">
         <div className="flex gap-6 md:gap-10 justify-center items-center">
           <Link href="/" className="hidden items-center space-x-2 md:flex ">
@@ -61,6 +42,17 @@ export function Navbar({userId}: {userId: string | null}) {
                 {item.name}
               </Link>
             ))}
+            <Link
+              href="/dashboard"
+              className={cn(
+                'flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm',
+                '/dashboard' === path
+                  ? 'text-foreground'
+                  : 'text-foreground/60',
+              )}
+            >
+              Dashboard
+            </Link>
           </nav>
 
           {/*<ThemeToggle />*/}
@@ -101,19 +93,28 @@ export function Navbar({userId}: {userId: string | null}) {
                       {item.name}
                     </Link>
                   ))}
+                  <Link
+                    href="/dashboard"
+                    className={cn(
+                      'flex w-full items-center rounded-md p-2 text-sm font-medium hover:underline',
+                    )}
+                  >
+                    Dashboard
+                  </Link>
                 </nav>
               </div>
             </div>
           )}
         </div>
-        {
-          userId ? <Button>
-                <SignOutButton/>
-              </Button> :
-            <Link href="/sign-in" className={buttonVariants()}>
+        {userId ? (
+          <div className={buttonVariants()}>
+            <SignOutButton />
+          </div>
+        ) : (
+          <Link href="/sign-in" className={buttonVariants()}>
             Login
           </Link>
-        }
+        )}
       </div>
     </header>
   )
