@@ -440,7 +440,7 @@ export default function ImportPage() {
             onChange={(e) => setPrompt(e.target.value)}
             onKeyDown={handleKeyDown}
             value={prompt}
-            placeholder="What was Elon middle name? "
+            placeholder="Just Imagine... "
           />
 
           <Button
