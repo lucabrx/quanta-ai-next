@@ -5,7 +5,7 @@ import { NewChatBtn } from '@/components/chat/new-chat-btn'
 export default function ChatLoad() {
   return (
     <div className="flex flex-col ">
-      <div className="flex md:flex-row flex-col items-center justify-between">
+      <div className="flex items-center justify-between">
         <h2 className="text-xl md:text-2xl">Latest Chat&apos;s 💬</h2>
         <NewChatBtn />
       </div>
