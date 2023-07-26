@@ -35,8 +35,6 @@ export async function POST(req: Request) {
     const body = await req.json()
     const { message, codeId } = body
 
-    console.log('this is server body: ', body)
-
     if (!userId) {
       return new NextResponse('Unauthorized', { status: 401 })
     }

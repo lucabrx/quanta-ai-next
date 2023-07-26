@@ -1,4 +1,4 @@
-// Icon generation API route
+// Image generation API route
 
 //TODO store images on s3 and add zod validation
 
@@ -16,10 +16,19 @@ const openai = new OpenAIApi(configuration)
 export async function POST(req: Request) {
   try {
     const { userId } = auth()
-    const { prompt, amount = 1, resolution = '512x512' } = await req.json()
+    const {
+      shape = 'circle',
+      color = 'red',
+      prompt,
+      style = 'minimalistic',
+      amount = 1,
+      resolution = '512x512',
+    } = await req.json()
+    const finalPrompt = `a modern ${shape} icon in ${color} of ${prompt}, ${style}, minimalistic, high quality, trending on art station, unreal engine graphics quality`
 
-    console.log('Image', prompt, amount, resolution)
-
+    if (!shape || !color || !style) {
+      return new NextResponse('Something is missing', { status: 400 })
+    }
     if (!userId) {
       return new NextResponse('Unauthorized', { status: 401 })
     }
@@ -33,7 +42,7 @@ export async function POST(req: Request) {
     }
 
     const response = await openai.createImage({
-      prompt,
+      prompt: finalPrompt,
       n: parseInt(amount),
       size: resolution,
     })

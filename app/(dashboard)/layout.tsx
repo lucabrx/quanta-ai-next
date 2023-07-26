@@ -7,9 +7,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
         <aside className="hidden w-[200px] flex-col md:flex">
           <DashboardNav />
         </aside>
-        <div className="flex w-full flex-1 flex-col">
-          {children}
-        </div>
+        <div className="flex w-full flex-1 flex-col">{children}</div>
       </div>
     </div>
   )

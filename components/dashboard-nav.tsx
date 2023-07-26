@@ -9,6 +9,7 @@ import {
   Home,
   Image,
   Languages,
+  Laugh,
   MessageSquare,
   Settings,
 } from 'lucide-react'
@@ -35,14 +36,19 @@ const items = [
     icon: Image,
   },
   {
-    title: 'Icons',
-    href: '/icons',
+    title: 'Icon',
+    href: '/icon',
     icon: Hexagon,
   },
   {
     title: 'Translators',
     href: '/translators',
     icon: Languages,
+  },
+  {
+    title: 'Joke',
+    href: '/joke',
+    icon: Laugh,
   },
   {
     title: 'Settings',
