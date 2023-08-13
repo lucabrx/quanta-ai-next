@@ -8,7 +8,7 @@ import { Webhook, X } from "lucide-react"
 
 import { navLinks } from "@/config/nav-links"
 import { cn } from "@/lib/utils"
-import { Button, buttonVariants } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 import { useClickOutside } from "@/app/hooks/use-click-outside"
 
 //TODO paths
@@ -53,7 +53,7 @@ export function Navbar({ userId }: { userId: string | null }) {
               </Link>
             ))}
             <Link
-              href="/dashboard"
+              href={"/dashboard"}
               className={cn(
                 "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm",
                 isNavbar === path ? "text-foreground" : "text-foreground/60"
@@ -102,7 +102,7 @@ export function Navbar({ userId }: { userId: string | null }) {
                     </Link>
                   ))}
                   <Link
-                    href="/dashboard"
+                    href={"/dashboard"}
                     className={cn(
                       "flex w-full items-center rounded-md p-2 text-sm font-medium hover:underline"
                     )}
@@ -119,7 +119,7 @@ export function Navbar({ userId }: { userId: string | null }) {
             <SignOutButton />
           </div>
         ) : (
-          <Link href="/sign-in" className={buttonVariants()}>
+          <Link href={"/sign-in"} className={buttonVariants()}>
             Login
           </Link>
         )}

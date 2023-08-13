@@ -19,5 +19,9 @@ export const NewChatBtn = () => {
     }
   }
 
-  return <Button onClick={submitNewConversation}>New Conversation</Button>
+  return (
+    <Button aria-label="start new conversation" onClick={() => void submitNewConversation()}>
+      New Conversation
+    </Button>
+  )
 }

@@ -1,8 +1,6 @@
 import {
   Code,
-  DollarSign,
   Hexagon,
-  icons,
   Image as ImageIcon,
   Languages,
   Laugh,

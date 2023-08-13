@@ -19,5 +19,12 @@ export const NewCodeBtn = () => {
       router.push(`/code/${id}`)
     }
   }
-  return <Button onClick={submitNewCodingConversation}>New Code Helper</Button>
+  return (
+    <Button
+      aria-label="create new code chat"
+      onClick={() => void submitNewCodingConversation()}
+    >
+      New Code Helper
+    </Button>
+  )
 }

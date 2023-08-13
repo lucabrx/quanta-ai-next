@@ -72,6 +72,7 @@ export const ChatForm: FC<ChatFormProps> = ({ conversationId }) => {
     <div>
       <form onSubmit={(e) => onSubmit(e)} className="relative flex w-full">
         <input
+          aria-label="chat input"
           disabled={loading}
           ref={inputRef as LegacyRef<HTMLInputElement>}
           className="h-full w-full rounded-lg border border-border bg-primary/10 px-4  py-4 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary dark:bg-input"
@@ -82,6 +83,7 @@ export const ChatForm: FC<ChatFormProps> = ({ conversationId }) => {
         />
 
         <Button
+          aria-label="send message"
           disabled={loading}
           className="absolute bottom-2.5 right-2.5 h-8 w-8"
           type="submit"
