@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button'
-import { Skeleton } from '@/components/ui/skeleton'
-import { NewChatBtn } from '@/components/chat/new-chat-btn'
+import { Button } from "@/components/ui/button"
+import { Skeleton } from "@/components/ui/skeleton"
+import { NewChatBtn } from "@/components/chat/new-chat-btn"
 
 export default function ChatLoad() {
   return (
@@ -10,22 +10,22 @@ export default function ChatLoad() {
         <NewChatBtn />
       </div>
 
-      <div className=" mt-8 mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[1024px] lg:grid-cols-4 w-full">
+      <div className=" mx-auto mt-8 grid w-full justify-center gap-4 sm:grid-cols-2 md:max-w-[1024px] lg:grid-cols-4">
         {Array.from({ length: 8 }).map((_, i) => (
           <div
             key={i}
-            className="relative overflow-hidden shadow rounded-lg border bg-background p-2 w-full"
+            className="relative w-full overflow-hidden rounded-lg border bg-background p-2 shadow"
           >
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-primary/30 to-secondary/30 opacity-10"></div>
+            <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-primary/30 to-secondary/30 opacity-10"></div>
             <div className="flex h-[120px] w-full flex-col justify-between rounded-md p-6">
-              <div className="space-y-3 w-full">
-                <Skeleton className="w-full h-[20px]" />
-                <Skeleton className="w-full h-[20px]" />
-                <Skeleton className="w-full h-[20px]" />
+              <div className="w-full space-y-3">
+                <Skeleton className="h-[20px] w-full" />
+                <Skeleton className="h-[20px] w-full" />
+                <Skeleton className="h-[20px] w-full" />
               </div>
             </div>
-            <div className="flex justify-end mr-2 mb-2">
-              <Button className="self-end z-20">Talk with me</Button>
+            <div className="mb-2 mr-2 flex justify-end">
+              <Button className="z-20 self-end">Talk with me</Button>
             </div>
           </div>
         ))}

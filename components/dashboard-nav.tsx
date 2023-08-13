@@ -1,8 +1,7 @@
-'use client'
+"use client"
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { cn } from '@/lib/utils'
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import {
   Code,
   Hexagon,
@@ -12,47 +11,49 @@ import {
   Laugh,
   MessageSquare,
   Settings,
-} from 'lucide-react'
+} from "lucide-react"
+
+import { cn } from "@/lib/utils"
 
 const items = [
   {
-    title: 'Dashboard',
-    href: '/dashboard',
+    title: "Dashboard",
+    href: "/dashboard",
     icon: Home,
   },
   {
-    title: 'Chat',
-    href: '/chat',
+    title: "Chat",
+    href: "/chat",
     icon: MessageSquare,
   },
   {
-    title: 'Code',
-    href: '/code',
+    title: "Code",
+    href: "/code",
     icon: Code,
   },
   {
-    title: 'Image',
-    href: '/image',
+    title: "Image",
+    href: "/image",
     icon: Image,
   },
   {
-    title: 'Icon',
-    href: '/icon',
+    title: "Icon",
+    href: "/icon",
     icon: Hexagon,
   },
   {
-    title: 'Translators',
-    href: '/translators',
+    title: "Translators",
+    href: "/translators",
     icon: Languages,
   },
   {
-    title: 'Joke',
-    href: '/joke',
+    title: "Joke",
+    href: "/joke",
     icon: Laugh,
   },
   {
-    title: 'Settings',
-    href: '/dashboard/settings',
+    title: "Settings",
+    href: "/dashboard/settings",
     icon: Settings,
   },
 ]
@@ -71,11 +72,11 @@ export function DashboardNav() {
             <Link key={index} href={item.href}>
               <span
                 className={cn(
-                  'group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent' +
-                    ' hover:text-accent-foreground hover:bg-primary/10',
+                  "group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent" +
+                    " hover:bg-primary/10 hover:text-accent-foreground",
                   path === item.href
-                    ? 'dark:bg-accent bg-primary/10'
-                    : 'transparent',
+                    ? "bg-primary/10 dark:bg-accent"
+                    : "transparent"
                 )}
               >
                 <item.icon className="mr-2 h-4 w-4" />

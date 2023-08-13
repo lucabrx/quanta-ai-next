@@ -1,132 +1,132 @@
 export const shapeType = [
   {
     id: 1,
-    name: 'Circle',
+    name: "Circle",
   },
   {
     id: 2,
-    name: 'Square',
+    name: "Square",
   },
   {
     id: 3,
-    name: 'Triangle',
+    name: "Triangle",
   },
   {
     id: 4,
-    name: 'Rectangle',
+    name: "Rectangle",
   },
   {
     id: 5,
-    name: 'Hexagon',
+    name: "Hexagon",
   },
   {
     id: 6,
-    name: 'Pentagon',
+    name: "Pentagon",
   },
   {
     id: 7,
-    name: 'Octagon',
+    name: "Octagon",
   },
 ]
 
 export const styleType = [
   {
     id: 1,
-    name: '3D',
+    name: "3D",
   },
   {
     id: 2,
-    name: 'Flat',
+    name: "Flat",
   },
   {
     id: 3,
-    name: 'Minimalistic',
+    name: "Minimalistic",
   },
   {
     id: 4,
-    name: 'Realistic',
+    name: "Realistic",
   },
   {
     id: 5,
-    name: 'Skeuomorphic',
+    name: "Skeuomorphic",
   },
   {
     id: 6,
-    name: 'Trendy',
+    name: "Trendy",
   },
   {
     id: 7,
-    name: 'Realistic',
+    name: "Realistic",
   },
   {
     id: 8,
-    name: 'Glassmorphism',
+    name: "Glassmorphism",
   },
   {
     id: 9,
-    name: 'Neumorphism',
+    name: "Neumorphism",
   },
 ]
 
 export const colorType = [
   {
     id: 1,
-    name: 'Red',
+    name: "Red",
   },
   {
     id: 2,
-    name: 'Orange',
+    name: "Orange",
   },
   {
     id: 3,
-    name: 'Yellow',
+    name: "Yellow",
   },
   {
     id: 4,
-    name: 'Green',
+    name: "Green",
   },
   {
     id: 5,
-    name: 'Blue',
+    name: "Blue",
   },
   {
     id: 6,
-    name: 'Purple',
+    name: "Purple",
   },
   {
     id: 7,
-    name: 'Pink',
+    name: "Pink",
   },
   {
     id: 8,
-    name: 'Brown',
+    name: "Brown",
   },
   {
     id: 9,
-    name: 'Black',
+    name: "Black",
   },
   {
     id: 10,
-    name: 'White',
+    name: "White",
   },
   {
     id: 11,
-    name: 'Gray',
+    name: "Gray",
   },
   {
     id: 12,
-    name: 'Rainbow',
+    name: "Rainbow",
   },
   {
     id: 13,
-    name: 'Pastel',
+    name: "Pastel",
   },
   {
     id: 14,
-    name: 'Neon',
+    name: "Neon",
   },
   {
     id: 15,
-    name: 'Metallic',
+    name: "Metallic",
   },
 ]

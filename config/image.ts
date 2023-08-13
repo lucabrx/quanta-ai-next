@@ -1,4 +1,4 @@
-import { ImageOff, Image, Palette, Library, LucideIcon } from 'lucide-react'
+import { Image, ImageOff, Library, LucideIcon, Palette } from "lucide-react"
 
 interface ContentType {
   id: number
@@ -9,25 +9,25 @@ interface ContentType {
 export const contentType: ContentType[] = [
   {
     id: 1,
-    name: 'None',
+    name: "None",
     selected: true,
     Icon: ImageOff,
   },
   {
     id: 2,
-    name: 'Photo',
+    name: "Photo",
     selected: false,
     Icon: Image,
   },
   {
     id: 3,
-    name: 'Art',
+    name: "Art",
     selected: false,
     Icon: Palette,
   },
   {
     id: 4,
-    name: 'Graphic',
+    name: "Graphic",
     selected: false,
     Icon: Library,
   },
@@ -36,320 +36,320 @@ export const contentType: ContentType[] = [
 export const movementsTags = [
   {
     id: 0,
-    name: 'None',
+    name: "None",
   },
   {
     id: 1,
-    name: 'Steampunk',
+    name: "Steampunk",
   },
   {
     id: 2,
-    name: 'Vaporwave',
+    name: "Vaporwave",
   },
   {
     id: 3,
-    name: 'Science fiction',
+    name: "Science fiction",
   },
   {
     id: 4,
-    name: 'Pyschedelic',
+    name: "Pyschedelic",
   },
   {
     id: 5,
-    name: 'Fantasy',
+    name: "Fantasy",
   },
   {
     id: 6,
-    name: 'Pop art',
+    name: "Pop art",
   },
   {
     id: 7,
-    name: 'Minimalism',
+    name: "Minimalism",
   },
   {
     id: 8,
-    name: 'Maximalism',
+    name: "Maximalism",
   },
   {
     id: 9,
-    name: 'Cubism',
+    name: "Cubism",
   },
   {
     id: 10,
-    name: 'Cyberpunk',
+    name: "Cyberpunk",
   },
   {
     id: 11,
-    name: 'Baroque',
+    name: "Baroque",
   },
 ]
 
 export const themesTags = [
   {
     id: 0,
-    name: 'None',
+    name: "None",
   },
   {
     id: 1,
-    name: 'Concept art',
+    name: "Concept art",
   },
   {
     id: 2,
-    name: 'Pixel art',
+    name: "Pixel art",
   },
   {
     id: 3,
-    name: '3D art',
+    name: "3D art",
   },
   {
     id: 4,
-    name: 'Product photo',
+    name: "Product photo",
   },
   {
     id: 5,
-    name: 'Hyper realistic',
+    name: "Hyper realistic",
   },
   {
     id: 6,
-    name: 'Cartoon',
+    name: "Cartoon",
   },
   {
     id: 7,
-    name: 'Stamp',
+    name: "Stamp",
   },
   {
     id: 8,
-    name: 'Vector look',
+    name: "Vector look",
   },
   {
     id: 9,
-    name: 'Low poly',
+    name: "Low poly",
   },
   {
     id: 10,
-    name: 'Graffiti',
+    name: "Graffiti",
   },
   {
     id: 11,
-    name: 'Geometric',
+    name: "Geometric",
   },
   {
     id: 12,
-    name: 'Wireframe',
+    name: "Wireframe",
   },
   {
     id: 13,
-    name: 'Flat colours',
+    name: "Flat colours",
   },
   {
     id: 14,
-    name: 'Collage',
+    name: "Collage",
   },
 ]
 
 export const techniquesTags = [
   {
     id: 0,
-    name: 'None',
+    name: "None",
   },
   {
     id: 1,
-    name: 'Painting',
+    name: "Painting",
   },
   {
     id: 2,
-    name: 'Drawing',
+    name: "Drawing",
   },
   {
     id: 3,
-    name: 'Watercolour',
+    name: "Watercolour",
   },
   {
     id: 4,
-    name: 'Oil painting',
+    name: "Oil painting",
   },
   {
     id: 5,
-    name: 'Acrylic painting',
+    name: "Acrylic painting",
   },
   {
     id: 6,
-    name: 'Line drawing',
+    name: "Line drawing",
   },
 ]
 
 export const effectsTags = [
   {
     id: 0,
-    name: 'None',
+    name: "None",
   },
   {
     id: 1,
-    name: 'Glitch',
+    name: "Glitch",
   },
   {
     id: 2,
-    name: 'Blur',
+    name: "Blur",
   },
   {
     id: 3,
-    name: 'Noise',
+    name: "Noise",
   },
   {
     id: 4,
-    name: 'Vignette',
+    name: "Vignette",
   },
   {
     id: 5,
-    name: 'Grain',
+    name: "Grain",
   },
   {
     id: 6,
-    name: 'Pixelated',
+    name: "Pixelated",
   },
   {
     id: 7,
-    name: 'Distorted',
+    name: "Distorted",
   },
   {
     id: 8,
-    name: 'Glow',
+    name: "Glow",
   },
   {
     id: 9,
-    name: 'Shadow',
+    name: "Shadow",
   },
   {
     id: 10,
-    name: 'Misty',
+    name: "Misty",
   },
 ]
 
 export const conceptsTags = [
   {
     id: 0,
-    name: 'None',
+    name: "None",
   },
   {
     id: 1,
-    name: 'Surreal',
+    name: "Surreal",
   },
   {
     id: 2,
-    name: 'Dreamy',
+    name: "Dreamy",
   },
   {
     id: 3,
-    name: 'Futuristic',
+    name: "Futuristic",
   },
   {
     id: 4,
-    name: 'Retro',
+    name: "Retro",
   },
   {
     id: 5,
-    name: 'Vintage',
+    name: "Vintage",
   },
   {
     id: 6,
-    name: 'Abstract',
+    name: "Abstract",
   },
   {
     id: 7,
-    name: 'Realistic',
+    name: "Realistic",
   },
   {
     id: 8,
-    name: 'Simple',
+    name: "Simple",
   },
   {
     id: 9,
-    name: 'Beautiful',
+    name: "Beautiful",
   },
   {
     id: 10,
-    name: 'Dark',
+    name: "Dark",
   },
   {
     id: 11,
-    name: 'Bright',
+    name: "Bright",
   },
   {
     id: 12,
-    name: 'Chaotic',
+    name: "Chaotic",
   },
 ]
 
 export const colorToneTags = [
   {
     id: 0,
-    name: 'None',
+    name: "None",
   },
   {
     id: 1,
-    name: 'Warm',
+    name: "Warm",
   },
   {
     id: 2,
-    name: 'Cold',
+    name: "Cold",
   },
   {
     id: 3,
-    name: 'Monochrome',
+    name: "Monochrome",
   },
   {
     id: 4,
-    name: 'Pastel',
+    name: "Pastel",
   },
   {
     id: 5,
-    name: 'Vibrant',
+    name: "Vibrant",
   },
   {
     id: 6,
-    name: 'White and black',
+    name: "White and black",
   },
   {
     id: 7,
-    name: 'Mutated Colours',
+    name: "Mutated Colours",
   },
 ]
 
 export const compositionsTags = [
   {
     id: 0,
-    name: 'None',
+    name: "None",
   },
   {
     id: 1,
-    name: 'Shot from above',
+    name: "Shot from above",
   },
   {
     id: 2,
-    name: 'Shot from below',
+    name: "Shot from below",
   },
   {
     id: 3,
-    name: 'Blurry background',
+    name: "Blurry background",
   },
   {
     id: 4,
-    name: 'Close up',
+    name: "Close up",
   },
   {
     id: 5,
-    name: 'Wide angle',
+    name: "Wide angle",
   },
   {
     id: 6,
-    name: 'Symmetrical',
+    name: "Symmetrical",
   },
   {
     id: 7,
-    name: 'Asymmetrical',
+    name: "Asymmetrical",
   },
   {
     id: 8,
-    name: 'Macrophotography',
+    name: "Macrophotography",
   },
 ]

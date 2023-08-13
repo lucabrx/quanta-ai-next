@@ -1,30 +1,31 @@
-'use client'
-import { Button, buttonVariants } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
-import Link from 'next/link'
+"use client"
 
-import { pricing, features } from '@/config/pricing'
+import Link from "next/link"
+
+import { features, pricing } from "@/config/pricing"
+import { cn } from "@/lib/utils"
+import { Button, buttonVariants } from "@/components/ui/button"
 
 export default function HomePage() {
   return (
-    <main className="flex-1 container overflow-y-hidden">
+    <main className="container flex-1 overflow-y-hidden">
       {/* color element */}
       <div className="absolute inset-x-0 top-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
-        <div className="relative left-[calc(50%-120px)] aspect-[1155/678] w-[300px] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] dark:from-[#852950] dark:to-[#191464] dark:opacity-10 opacity-30 sm:left-[calc(50%-340px)] sm:w-[1200px] "></div>
+        <div className="relative left-[calc(50%-120px)] aspect-[1155/678] w-[300px] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 dark:from-[#852950] dark:to-[#191464] dark:opacity-10 sm:left-[calc(50%-340px)] sm:w-[1200px] "></div>
       </div>
 
       {/* content */}
-      <section className="space-y-6 pb-8  md:pb-12 pt-20 lg:py-36 xl:pt-42">
+      <section className="xl:pt-42 space-y-6  pb-8 pt-20 md:pb-12 lg:py-36">
         <div className="container flex max-w-[1120px] flex-col items-center gap-4 text-center">
           <p className="rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium">
             Powered by OpenAI
           </p>
-          <h1 className="font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-            <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#e64c8c] to-[#645cd8]">
+          <h1 className="text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+            <span className="bg-gradient-to-br from-[#e64c8c] to-[#645cd8] bg-clip-text text-transparent">
               Quanta
-            </span>{' '}
-            Next-Gen AI-tool for daily use and{' '}
-            <span className="text-transparent transition-opacity duration-200 ease-in-out bg-clip-text bg-gradient-to-br from-[#e64c8c] to-[#645cd8]">
+            </span>{" "}
+            Next-Gen AI-tool for daily use and{" "}
+            <span className="bg-gradient-to-br from-[#e64c8c] to-[#645cd8] bg-clip-text text-transparent transition-opacity duration-200 ease-in-out">
               productivity.
             </span>
           </h1>
@@ -36,7 +37,7 @@ export default function HomePage() {
           <div className="space-x-4">
             <Link
               href="/dashboard"
-              className={cn(buttonVariants({ size: 'lg' }))}
+              className={cn(buttonVariants({ size: "lg" }))}
             >
               Get Started
             </Link>
@@ -44,7 +45,7 @@ export default function HomePage() {
               href="https://github.com/lucabrx?tab=repositories"
               target="_blank"
               rel="noreferrer"
-              className={cn(buttonVariants({ variant: 'outline', size: 'lg' }))}
+              className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
             >
               GitHub
             </Link>
@@ -66,9 +67,9 @@ export default function HomePage() {
           {features.map((feature, i) => (
             <div
               key={i}
-              className="relative overflow-hidden shadow rounded-lg border bg-background p-2"
+              className="relative overflow-hidden rounded-lg border bg-background p-2 shadow"
             >
-              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-primary/30 to-secondary/30 opacity-10"></div>
+              <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-primary/30 to-secondary/30 opacity-10"></div>
               <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
                 <feature.icon className="h-12 w-12 " />
                 <div className="space-y-2">
@@ -102,25 +103,25 @@ export default function HomePage() {
               <div
                 key={i}
                 className={cn(
-                  'relative overflow-hidden shadow rounded-lg border bg-background p-2',
-                  item.name === 'Standard' && 'border-primary/50',
+                  "relative overflow-hidden rounded-lg border bg-background p-2 shadow",
+                  item.name === "Standard" && "border-primary/50"
                 )}
               >
-                {item.name === 'Standard' && (
-                  <div className="absolute top-2 right-2 p-2 rounded-md border border-primary text-sm">
+                {item.name === "Standard" && (
+                  <div className="absolute right-2 top-2 rounded-md border border-primary p-2 text-sm">
                     Best Value
                   </div>
                 )}
 
                 <div className="flex h-[380px] flex-col justify-between rounded-md p-6">
-                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-primary/30 to-secondary/30 opacity-10"></div>
+                  <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-primary/30 to-secondary/30 opacity-10"></div>
                   <div className="space-y-2">
-                    <h3 className="font-bold text-lg">{item.name}</h3>
-                    <p className=" text-muted-foreground font-bold">
-                      {item.price === 0 ? 'Free' : item.price + '$'}
+                    <h3 className="text-lg font-bold">{item.name}</h3>
+                    <p className=" font-bold text-muted-foreground">
+                      {item.price === 0 ? "Free" : item.price + "$"}
                     </p>
 
-                    <h3 className="font-bold text-lg">Features</h3>
+                    <h3 className="text-lg font-bold">Features</h3>
                     {item.features.map((feature, i) => (
                       <p key={i} className=" text-muted-foreground">
                         {feature}
@@ -128,7 +129,7 @@ export default function HomePage() {
                     ))}
                   </div>
 
-                  <Button className="w-full mt-4">Embrace Quanta</Button>
+                  <Button className="mt-4 w-full">Embrace Quanta</Button>
                 </div>
               </div>
             )

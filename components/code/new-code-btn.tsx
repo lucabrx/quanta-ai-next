@@ -1,9 +1,10 @@
-'use client'
+"use client"
 
-import { Button } from '@/components/ui/button'
-import { useRouter } from 'next/navigation'
-import { nanoid } from 'nanoid'
-import axios from 'axios'
+import { useRouter } from "next/navigation"
+import axios from "axios"
+import { nanoid } from "nanoid"
+
+import { Button } from "@/components/ui/button"
 
 export const NewCodeBtn = () => {
   const router = useRouter()

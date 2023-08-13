@@ -1,13 +1,16 @@
-'use client'
-import Link from 'next/link'
-import { Button, buttonVariants } from '@/components/ui/button'
-import { usePathname } from 'next/navigation'
-import { cn } from '@/lib/utils'
-import { Webhook, X } from 'lucide-react'
-import { useRef, useState } from 'react'
-import { useClickOutside } from '@/app/hooks/use-click-outside'
-import { SignOutButton } from '@clerk/nextjs'
-import { navLinks } from '@/config/nav-links'
+"use client"
+
+import { useRef, useState } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { SignOutButton } from "@clerk/nextjs"
+import { Webhook, X } from "lucide-react"
+
+import { navLinks } from "@/config/nav-links"
+import { cn } from "@/lib/utils"
+import { Button, buttonVariants } from "@/components/ui/button"
+import { useClickOutside } from "@/app/hooks/use-click-outside"
+
 //TODO paths
 export function Navbar({ userId }: { userId: string | null }) {
   const path = usePathname()
@@ -15,24 +18,24 @@ export function Navbar({ userId }: { userId: string | null }) {
   const mobMenuRef = useRef<HTMLDivElement>(null)
   useClickOutside(mobMenuRef, () => setShowMobileMenu(false))
   const noNavbar =
-    path !== '/chat' || '/code' || '/translate' || '/sign-in' || '/sign-up'
-      ? 'flex'
-      : 'hidden'
+    path !== "/chat" || "/code" || "/translate" || "/sign-in" || "/sign-up"
+      ? "flex"
+      : "hidden"
   const isNavbar =
-    'chat' || 'code' || 'translate' || 'icon' || 'image' || 'joke'
+    "chat" || "code" || "translate" || "icon" || "image" || "joke"
 
   return (
     <header
       className={cn(
-        'w-full border-b dark:border-border border-white/20 flex-col',
-        noNavbar,
+        "w-full flex-col border-b border-white/20 dark:border-border",
+        noNavbar
       )}
     >
-      <div className="container flex justify-between w-full items-center py-2">
-        <div className="flex gap-6 md:gap-10 justify-center items-center">
+      <div className="container flex w-full items-center justify-between py-2">
+        <div className="flex items-center justify-center gap-6 md:gap-10">
           <Link href="/" className="hidden items-center space-x-2 md:flex ">
             <Webhook className="text-[#e64c8c] " />
-            <span className="hidden font-bold sm:inline-block text-transparent bg-clip-text bg-gradient-to-br from-[#e64c8c] to-[#645cd8]">
+            <span className="hidden bg-gradient-to-br from-[#e64c8c] to-[#645cd8] bg-clip-text font-bold text-transparent sm:inline-block">
               Quanta
             </span>
           </Link>
@@ -42,8 +45,8 @@ export function Navbar({ userId }: { userId: string | null }) {
                 key={index}
                 href={item.href}
                 className={cn(
-                  'flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm',
-                  item.href === path ? 'text-foreground' : 'text-foreground/60',
+                  "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm",
+                  item.href === path ? "text-foreground" : "text-foreground/60"
                 )}
               >
                 {item.name}
@@ -52,8 +55,8 @@ export function Navbar({ userId }: { userId: string | null }) {
             <Link
               href="/dashboard"
               className={cn(
-                'flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm',
-                isNavbar === path ? 'text-foreground' : 'text-foreground/60',
+                "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm",
+                isNavbar === path ? "text-foreground" : "text-foreground/60"
               )}
             >
               Dashboard
@@ -72,8 +75,8 @@ export function Navbar({ userId }: { userId: string | null }) {
           {showMobileMenu && (
             <div
               className={cn(
-                'fixed inset-0 top-10 z-50 grid h-[calc(100vh-48px)] grid-flow-row auto-rows-max' +
-                  ' overflow-auto p-6 pb-32 shadow-md animate-in slide-in-from-bottom-80 md:hidden',
+                "fixed inset-0 top-10 z-50 grid h-[calc(100vh-48px)] grid-flow-row auto-rows-max" +
+                  " overflow-auto p-6 pb-32 shadow-md animate-in slide-in-from-bottom-80 md:hidden"
               )}
             >
               <div
@@ -82,7 +85,7 @@ export function Navbar({ userId }: { userId: string | null }) {
               >
                 <Link href="/" className="flex items-center space-x-2">
                   <Webhook className="text-[#e64c8c] " />
-                  <span className="font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#e64c8c] to-[#645cd8]">
+                  <span className="bg-gradient-to-br from-[#e64c8c] to-[#645cd8] bg-clip-text font-bold text-transparent">
                     Quanta
                   </span>
                 </Link>
@@ -92,7 +95,7 @@ export function Navbar({ userId }: { userId: string | null }) {
                       href={item.href}
                       key={index}
                       className={cn(
-                        'flex w-full items-center rounded-md p-2 text-sm font-medium hover:underline',
+                        "flex w-full items-center rounded-md p-2 text-sm font-medium hover:underline"
                       )}
                     >
                       {item.name}
@@ -101,7 +104,7 @@ export function Navbar({ userId }: { userId: string | null }) {
                   <Link
                     href="/dashboard"
                     className={cn(
-                      'flex w-full items-center rounded-md p-2 text-sm font-medium hover:underline',
+                      "flex w-full items-center rounded-md p-2 text-sm font-medium hover:underline"
                     )}
                   >
                     Dashboard

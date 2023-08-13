@@ -73,6 +73,6 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground flex flex-col justify-between min-h-screen;
+    @apply flex min-h-screen flex-col justify-between bg-background text-foreground;
   }
 }

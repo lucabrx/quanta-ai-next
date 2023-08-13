@@ -3,18 +3,19 @@
 // Saving response to database
 // Sending all messages to OpenAI from db
 
-import { auth } from '@clerk/nextjs'
-import { NextResponse } from 'next/server'
+import { NextResponse } from "next/server"
+import { Conversation, Message } from "@/db/tables"
+import { env } from "@/env.mjs"
+import { auth } from "@clerk/nextjs"
+import { asc, eq } from "drizzle-orm"
+import { nanoid } from "nanoid"
 import {
-  type ChatCompletionRequestMessage,
   Configuration,
   OpenAIApi,
-} from 'openai'
-import { env } from '@/env.mjs'
-import { db } from '@/lib/db'
-import { Conversation, Message } from '@/db/tables'
-import { nanoid } from 'nanoid'
-import { asc, eq } from 'drizzle-orm'
+  type ChatCompletionRequestMessage,
+} from "openai"
+
+import { db } from "@/lib/db"
 
 const configuration = new Configuration({
   apiKey: env.OPENAI_KEY,
@@ -27,16 +28,16 @@ export async function POST(req: Request) {
     const body = await req.json()
     const { message, chatId } = body
 
-    console.log('this is server body: ', body)
+    console.log("this is server body: ", body)
 
     if (!userId) {
-      return new NextResponse('Unauthorized', { status: 401 })
+      return new NextResponse("Unauthorized", { status: 401 })
     }
     if (!configuration.apiKey) {
-      return new NextResponse('OpenAI API Key not configured.', { status: 500 })
+      return new NextResponse("OpenAI API Key not configured.", { status: 500 })
     }
     if (!message) {
-      return new NextResponse('Message not provided', { status: 400 })
+      return new NextResponse("Message not provided", { status: 400 })
     }
 
     const chat = await db
@@ -56,7 +57,7 @@ export async function POST(req: Request) {
     await db.insert(Message).values({
       id: nanoid(),
       text: message,
-      role: 'user',
+      role: "user",
       user_id: userId,
       conversation_id: chatId,
     })
@@ -77,21 +78,21 @@ export async function POST(req: Request) {
     }
 
     const response = await openai.createChatCompletion({
-      model: 'gpt-3.5-turbo',
+      model: "gpt-3.5-turbo",
       messages: messagesArr,
     })
 
     await db.insert(Message).values({
       id: nanoid(),
       text: String(response.data.choices[0].message?.content),
-      role: 'system',
+      role: "system",
       user_id: userId,
       conversation_id: chatId,
     })
 
-    return NextResponse.json('Message received')
+    return NextResponse.json("Message received")
   } catch (e) {
     console.log(e)
-    return new NextResponse('Internal Error', { status: 500 })
+    return new NextResponse("Internal Error", { status: 500 })
   }
 }
