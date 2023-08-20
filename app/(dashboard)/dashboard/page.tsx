@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 import { features } from "@/config/pricing"
-import { Button, buttonVariants } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 
 export default function DashboardPage() {
   return (

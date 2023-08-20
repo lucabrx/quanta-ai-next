@@ -82,7 +82,7 @@ export const features: Feature[] = [
     name: "Translator",
     description: "Translate any language known by world.",
     icon: Languages,
-    path: "/translate",
+    path: "/chat",
   },
   {
     name: "Generate Random Joke",

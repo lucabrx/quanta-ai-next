@@ -7,7 +7,6 @@ import {
   Hexagon,
   Home,
   Image,
-  Languages,
   Laugh,
   MessageSquare,
   Settings,
@@ -42,18 +41,13 @@ const items = [
     icon: Hexagon,
   },
   {
-    title: "Translators",
-    href: "/translators",
-    icon: Languages,
-  },
-  {
     title: "Joke",
     href: "/joke",
     icon: Laugh,
   },
   {
     title: "Settings",
-    href: "/dashboard/settings",
+    href: "/settings",
     icon: Settings,
   },
 ]
