@@ -39,6 +39,8 @@ export function Navbar({ userId }: { userId: string | null }) {
               Quanta
             </span>
           </Link>
+
+          { path === "/" &&
           <nav className="hidden gap-3 md:flex">
             {navLinks?.map((item, index) => (
               <Link
@@ -53,15 +55,13 @@ export function Navbar({ userId }: { userId: string | null }) {
               </Link>
             ))}
             <Link
-              href="/dashboard"
-              className={cn(
-                "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm",
-                isNavbar === path ? "text-foreground" : "text-foreground/60"
-              )}
+              href={"/dashboard"}
+              className="flex items-center text-lg font-medium transition-colors text-foreground/60 sm:text-sm"
             >
               Dashboard
             </Link>
           </nav>
+          }
 
           {/*<ThemeToggle />*/}
           <button

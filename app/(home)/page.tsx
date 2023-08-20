@@ -36,7 +36,7 @@ export default function HomePage() {
 
           <div className="space-x-4">
             <Link
-              href="/dashboard"
+              href={"/dashboard"}
               className={cn(buttonVariants({ size: "lg" }))}
             >
               Get Started
@@ -55,7 +55,7 @@ export default function HomePage() {
 
       <section
         id="features"
-        className="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-24 "
+        className="container space-y-6  py-8 md:py-12 lg:py-24 "
       >
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
@@ -84,10 +84,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section
-        id="pricing"
-        className="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12"
-      >
+      <section id="pricing" className="container space-y-6 py-8  md:py-12">
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
             Pricing
@@ -137,10 +134,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section
-        id="about"
-        className="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12"
-      >
+      <section id="about" className="container space-y-6  py-8 md:py-12">
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
             About
