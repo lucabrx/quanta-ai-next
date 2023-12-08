@@ -8,6 +8,7 @@ import Footer from "@/components/footer"
 import { TailwindIndicator } from "@/components/helpers/tailwind-indicator"
 import { ThemeProvider } from "@/components/helpers/theme-provider"
 import { Navbar } from "@/components/navbar"
+import {ReactNode} from "react";
 
 const montserrat = Montserrat({ subsets: ["latin"] })
 
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
 export default async function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: ReactNode
 }) {
   const { userId } = auth()
   return (
