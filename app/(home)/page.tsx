@@ -36,7 +36,7 @@ export default function HomePage() {
 
           <div className="space-x-4">
             <Link
-              href="/dashboard"
+              href={"/dashboard"}
               className={cn(buttonVariants({ size: "lg" }))}
             >
               Get Started
@@ -55,7 +55,7 @@ export default function HomePage() {
 
       <section
         id="features"
-        className="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-24 "
+        className="container space-y-6  py-8 md:py-12 lg:py-24 "
       >
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
@@ -84,63 +84,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section
-        id="pricing"
-        className="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12"
-      >
-        <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
-          <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-            Pricing
-          </h2>
-          <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            For 20$ a month you can get access to all features.
-          </p>
-        </div>
-
-        <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
-          {pricing.map((item, i) => {
-            return (
-              <div
-                key={i}
-                className={cn(
-                  "relative overflow-hidden rounded-lg border bg-background p-2 shadow",
-                  item.name === "Standard" && "border-primary/50"
-                )}
-              >
-                {item.name === "Standard" && (
-                  <div className="absolute right-2 top-2 rounded-md border border-primary p-2 text-sm">
-                    Best Value
-                  </div>
-                )}
-
-                <div className="flex h-[380px] flex-col justify-between rounded-md p-6">
-                  <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-primary/30 to-secondary/30 opacity-10"></div>
-                  <div className="space-y-2">
-                    <h3 className="text-lg font-bold">{item.name}</h3>
-                    <p className=" font-bold text-muted-foreground">
-                      {item.price === 0 ? "Free" : item.price + "$"}
-                    </p>
-
-                    <h3 className="text-lg font-bold">Features</h3>
-                    {item.features.map((feature, i) => (
-                      <p key={i} className=" text-muted-foreground">
-                        {feature}
-                      </p>
-                    ))}
-                  </div>
-
-                  <Button className="mt-4 w-full">Embrace Quanta</Button>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      </section>
-
-      <section
-        id="about"
-        className="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12"
-      >
+      <section id="about" className="container space-y-6  py-8 md:py-12">
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
           <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
             About
